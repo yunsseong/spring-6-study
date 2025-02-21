@@ -6,8 +6,24 @@ plugins {
 
 group = 'com.spring-6-study'
 version = '1.0.0'
-sourceCompatibility = '21'
-targetCompatibility = '21'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = false
+}
 
 subprojects {
     apply plugin: 'java'
@@ -21,12 +37,6 @@ subprojects {
     dependencies {
         implementation 'org.springframework.boot:spring-boot-starter'
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    }
-
-    dependencyManagement {
-        imports {
-            mavenBom "org.springframework.boot:spring-boot-dependencies:3.2.3"
-        }
     }
 
     tasks.withType(JavaCompile) {
