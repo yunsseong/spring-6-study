@@ -1,10 +1,10 @@
-package com.spring6_study.__comparing_as_is_ans_to_be_codes;
+package com.spring6_study.__overview_of_spring_and_introduction_to_subprojects;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ApplicationTests {
+class Application2Tests {
 
 	@Test
 	void contextLoads() {
