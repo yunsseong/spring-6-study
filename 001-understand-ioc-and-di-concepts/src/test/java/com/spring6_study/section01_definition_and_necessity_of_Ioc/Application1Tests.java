@@ -1,4 +1,4 @@
-package com.spring6_study.__understand_ioc_and_di_concepts;
+package com.spring6_study.section01;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
