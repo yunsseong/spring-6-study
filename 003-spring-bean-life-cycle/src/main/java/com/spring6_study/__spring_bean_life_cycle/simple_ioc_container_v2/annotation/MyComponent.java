@@ -1,4 +1,4 @@
-package com.spring6_study.section03_role_and_working_principle_of_ioc_container.simple_ioc_container.annotation;
+package com.spring6_study.__spring_bean_life_cycle.simple_ioc_container_v2.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

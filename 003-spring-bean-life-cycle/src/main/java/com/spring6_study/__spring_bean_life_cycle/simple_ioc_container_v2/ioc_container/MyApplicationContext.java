@@ -1,8 +1,13 @@
-package com.spring6_study.section03_role_and_working_principle_of_ioc_container.simple_ioc_container.ioc_container;
+package com.spring6_study.__spring_bean_life_cycle.simple_ioc_container_v2.ioc_container;
 
 
-import com.spring6_study.section03_role_and_working_principle_of_ioc_container.simple_ioc_container.annotation.MyAutowired;
-import com.spring6_study.section03_role_and_working_principle_of_ioc_container.simple_ioc_container.annotation.MyComponent;
+
+import com.spring6_study.__spring_bean_life_cycle.simple_ioc_container_v2.annotation.MyAutowired;
+import com.spring6_study.__spring_bean_life_cycle.simple_ioc_container_v2.annotation.MyComponent;
+import com.spring6_study.__spring_bean_life_cycle.simple_ioc_container_v2.annotation.MyPostConstruct;
+import com.spring6_study.__spring_bean_life_cycle.simple_ioc_container_v2.annotation.MyPreDestroy;
+import com.spring6_study.__spring_bean_life_cycle.simple_ioc_container_v2.bean_interface.MyDisposableBean;
+import com.spring6_study.__spring_bean_life_cycle.simple_ioc_container_v2.bean_interface.MyInitializingBean;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -66,6 +71,29 @@ public class MyApplicationContext {
                 }
             }
         }
+
+        // 4단계 : 빈 초기화 처리 (초기화 콜백 메서드 호출)
+        for (Object bean : beanContainer.values()) {
+            Method[] declaredMethods = bean.getClass().getDeclaredMethods();
+            for (Method method : declaredMethods) {
+                if(method.isAnnotationPresent(MyPostConstruct.class)) {
+                    method.setAccessible(true);
+                    try {
+                        method.invoke(bean);
+                    } catch (Exception e) {
+                        throw new RuntimeException("초기화 실패 (@PostConstruct)");
+                    }
+                }
+            }
+
+            if (bean instanceof MyInitializingBean) {
+                try {
+                    ((MyInitializingBean) bean).afterPropertiesSet();
+                } catch (Exception e){
+                    throw new RuntimeException("초기화 실패 (@InitializingBean)");
+                }
+            }
+        }
     }
 
     public Object createInstance(Class<?> clazz) {
@@ -109,5 +137,29 @@ public class MyApplicationContext {
 
     public <T> T getBean(Class<T> clazz) {
         return clazz.cast(beanContainer.get(clazz));
+    }
+
+    // 5단계 : 빈 소멸 처리 (컨테이너 종료 시 호출)
+    public void close() {
+        for (Object bean : beanContainer.values()) {
+            Method[] declaredMethods = bean.getClass().getDeclaredMethods();
+            for (Method method : declaredMethods) {
+                if (method.isAnnotationPresent(MyPreDestroy.class)) {
+                    try {
+                        method.invoke(bean);
+                    } catch (Exception e) {
+                        throw new RuntimeException("소멸(@MyPostConstruct) 실패");
+                    }
+                }
+            }
+
+            if (bean instanceof MyDisposableBean) {
+                try {
+                    ((MyDisposableBean) bean).destroy();
+                } catch (Exception e) {
+                    throw new RuntimeException("소멸(destroy) 실패");
+                }
+            }
+        }
     }
 }
