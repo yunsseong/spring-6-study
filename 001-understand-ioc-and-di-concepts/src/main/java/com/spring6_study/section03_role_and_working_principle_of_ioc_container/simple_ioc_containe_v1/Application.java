@@ -1,8 +1,8 @@
-package com.spring6_study.section03_role_and_working_principle_of_ioc_container.simple_ioc_container;
+package com.spring6_study.section03_role_and_working_principle_of_ioc_container.simple_ioc_containe_v1;
 
-import com.spring6_study.section03_role_and_working_principle_of_ioc_container.simple_ioc_container.ioc_container.MyApplicationContext;
-import com.spring6_study.section03_role_and_working_principle_of_ioc_container.simple_ioc_container.service.ServiceA;
-import com.spring6_study.section03_role_and_working_principle_of_ioc_container.simple_ioc_container.service.ServiceB;
+import com.spring6_study.section03_role_and_working_principle_of_ioc_container.simple_ioc_containe_v1.ioc_container.MyApplicationContext;
+import com.spring6_study.section03_role_and_working_principle_of_ioc_container.simple_ioc_containe_v1.service.ServiceA;
+import com.spring6_study.section03_role_and_working_principle_of_ioc_container.simple_ioc_containe_v1.service.ServiceB;
 
 public class Application {
     public static void main(String[] args) {
