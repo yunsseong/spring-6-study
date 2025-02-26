@@ -6,7 +6,7 @@ import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.core.io.ClassPathResource;
 
-public class BeanFactoryContainer {
+public class BeanFactoryExercise {
     public static void main(String[] args) {
         // 1. BeanFactory 생성
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();

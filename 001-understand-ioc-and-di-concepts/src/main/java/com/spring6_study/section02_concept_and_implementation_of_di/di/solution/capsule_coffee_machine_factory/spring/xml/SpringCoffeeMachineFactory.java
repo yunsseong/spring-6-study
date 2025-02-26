@@ -6,7 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class SpringCoffeeMachineFactory {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext(
-                "applicationContext.xml");
+                "beans.xml");
         CoffeeMachine coffeeMachine = context.getBean(CoffeeMachine.class);
         coffeeMachine.dripCoffee();
     }
