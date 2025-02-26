@@ -1,0 +1,4 @@
+package com.spring6_study.section03_role_and_working_principle_of_ioc_container.spring_ioc_container.application_context;
+
+public class ApplicationContextContainer {
+}
