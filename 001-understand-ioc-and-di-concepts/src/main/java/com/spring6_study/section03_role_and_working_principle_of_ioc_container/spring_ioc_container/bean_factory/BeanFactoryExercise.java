@@ -31,5 +31,9 @@ public class BeanFactoryExercise {
 
         // 4. 빈 존재 유무 확인하기
         System.out.println("Is contain coffeeMachine Bean : " + beanFactory.containsBean("coffeeMachine"));
+
+        // 5. 빈이 싱글턴인지 확인하기
+        boolean isSingleton = beanFactory.isSingleton("coffeeMachine");
+        System.out.println("Is Singleton = " + isSingleton);
     }
 }
