@@ -1,7 +1,7 @@
-package com.spring6_study.__spring_bean_life_cycle.example;
+package com.spring6_study.__spring_bean_life_cycle.simple_ioc_container_v2.infra;
 
-import jakarta.annotation.PostConstruct;
-import jakarta.annotation.PreDestroy;
+import com.spring6_study.__spring_bean_life_cycle.simple_ioc_container_v2.annotation.MyPostConstruct;
+import com.spring6_study.__spring_bean_life_cycle.simple_ioc_container_v2.annotation.MyPreDestroy;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -11,18 +11,18 @@ import org.springframework.stereotype.Component;
 public class DatabaseConnectionManager {
     private Connection connection;
 
-    @PostConstruct
+    @MyPostConstruct
     public void connect() {
         try {
             System.out.println("데이터베이스 연결 설정 중...");
-            connection = DriverManager.getConnection("jdbc:h2:mem:testdb", "sa", "");
+            connection = DriverManager.getConnection("jdbc:h2:tcp://localhost:9092/~/testdb", "sa", "");
             System.out.println("데이터베이스 연결 성공");
         } catch (SQLException e) {
             throw new RuntimeException("데이터베이스 연결 실패");
         }
     }
 
-    @PreDestroy
+    @MyPreDestroy
     public void disconnect() {
         try {
             System.out.println("데이터베이스 연결 해제 중...");
