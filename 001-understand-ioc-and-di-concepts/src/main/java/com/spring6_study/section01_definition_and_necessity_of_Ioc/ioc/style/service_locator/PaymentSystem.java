@@ -1,6 +1,6 @@
 package com.spring6_study.section01_definition_and_necessity_of_Ioc.ioc.style.service_locator;
 
-public class Main {
+public class PaymentSystem {
     public static void main(String[] args) {
         ServiceLocator serviceLocator = new ServiceLocator();
         serviceLocator.register("CreditCard", new CreditCardPaymentService());
