@@ -8,11 +8,13 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+
+    public User findUser(Long userId) {
+        return userRepository.findUserById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("사용자를 찾을 수 없습니다."));
     }
 
-    public void search() {
-        userRepository.getUser();
+    public User registerUser(Long userId, String name) {
+        return userRepository.save(new User(userId, name));
     }
 }

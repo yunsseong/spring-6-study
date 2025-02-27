@@ -8,6 +8,9 @@ public class Application {
     public static void main(String[] args) {
         UserRepository userRepository = new UserRepository();
         UserService userService = new UserService(userRepository);
-        userService.search();
+        User user1 = userService.registerUser(1L, "김철수");
+        System.out.println("user1 = " + user1);
+        User findUser = userService.findUser(1L);
+        System.out.println("findUser = " + findUser);
     }
 }
