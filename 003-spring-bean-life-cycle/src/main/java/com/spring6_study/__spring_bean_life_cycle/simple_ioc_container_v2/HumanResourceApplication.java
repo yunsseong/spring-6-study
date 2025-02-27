@@ -4,7 +4,7 @@ package com.spring6_study.__spring_bean_life_cycle.simple_ioc_container_v2;
 import com.spring6_study.__spring_bean_life_cycle.simple_ioc_container_v2.domain.User;
 import com.spring6_study.__spring_bean_life_cycle.simple_ioc_container_v2.infra.DatabaseConnectionManager;
 import com.spring6_study.__spring_bean_life_cycle.simple_ioc_container_v2.ioc_container.MyApplicationContext;
-import com.spring6_study.__spring_bean_life_cycle.simple_ioc_container_v2.service.UserRepository;
+import com.spring6_study.__spring_bean_life_cycle.simple_ioc_container_v2.infra.UserRepository;
 import com.spring6_study.__spring_bean_life_cycle.simple_ioc_container_v2.service.UserService;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -3,6 +3,8 @@ package com.spring6_study.__spring_bean_life_cycle.simple_ioc_container_v2.servi
 import com.spring6_study.__spring_bean_life_cycle.simple_ioc_container_v2.domain.User;
 import com.spring6_study.__spring_bean_life_cycle.simple_ioc_container_v2.annotation.MyAutowired;
 import com.spring6_study.__spring_bean_life_cycle.simple_ioc_container_v2.annotation.MyComponent;
+import com.spring6_study.__spring_bean_life_cycle.simple_ioc_container_v2.infra.UserRepository;
+
 @MyComponent
 public class UserService {
     private final UserRepository userRepository;
